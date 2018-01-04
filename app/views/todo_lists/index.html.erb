@@ -1,0 +1,18 @@
+<h3>Todo</h3>
+
+<div>
+  <%= link_to  "Add todo", new_todo_list_path %>
+  <ul>
+    <% @todos.each do |item| %>
+      <li>
+        <%= item.complete %>
+        <%= item.text %>
+        <%= item.updated_at.strftime('%m/%d/%y') %>
+        <%= link_to  "Edit", edit_todo_list_path(item) %>
+        <%= link_to  "Delete", todo_list_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to  "Back", welcome_index_path %>

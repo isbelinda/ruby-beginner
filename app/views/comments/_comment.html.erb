@@ -1,0 +1,17 @@
+<p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+</p>
+<p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+</p>
+<p>
+    <strong>Comment date:</strong>
+    <%= comment.updated_at.to_formatted_s(:long) %> | 
+    <%= comment.updated_at.in_time_zone %>
+</p>
+<p>
+    <%= link_to  "Destroy comment", article_comments_path(article_id: @article.id, id: comment.id), 
+                                     method: :delete, data: {confirm: 'Are you sure?'} %>
+</p>
