@@ -1,4 +1,4 @@
-<%= simple_form_for @todo, url: todo_lists_path do |f| %>
+<%= simple_form_for @todo, url: @todo.persisted? ? todo_list_path : todo_lists_path do |f| %>
   <%= f.input :text %>
   <%= f.button :submit %>
 <% end %>

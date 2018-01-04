@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     resource :comments
   end
 
-  resources :todo_lists
+  resources :todo_lists do
+    member do
+      patch :update_completed
+    end
+  end
 
   root 'welcome#index'
 

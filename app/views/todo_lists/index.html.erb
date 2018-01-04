@@ -5,11 +5,13 @@
   <ul>
     <% @todos.each do |item| %>
       <li>
-        <%= item.complete %>
         <%= item.text %>
-        <%= item.updated_at.strftime('%m/%d/%y') %>
-        <%= link_to  "Edit", edit_todo_list_path(item) %>
-        <%= link_to  "Delete", todo_list_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <%= item.updated_at.strftime("%m/%d/%Y %H:%M") %>
+        <% if !item.complete %>
+          <%= link_to  "Complete", update_completed_todo_list_path(item), method: :patch %>
+          <%= link_to  "Edit", edit_todo_list_path(item) %>
+          <%= link_to  "Delete", todo_list_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
       </li>
     <% end %>
   </ul>

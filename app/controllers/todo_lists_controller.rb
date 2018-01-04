@@ -1,5 +1,5 @@
 class TodoListsController < ApplicationController
-  before_action :load_todo, only: [:edit, :destroy]
+  before_action :load_todo, only: [:edit, :destroy, :update_completed, :update]
 
   def index
     @todos = Todo.all
@@ -21,8 +21,17 @@ class TodoListsController < ApplicationController
   def edit
   end
 
+  def update
+    binding.pry
+  end
+
   def destroy
     @todo.destroy
+    redirect_to todo_lists_path
+  end
+
+  def update_completed
+    @todo.check_status_completed
     redirect_to todo_lists_path
   end
 
