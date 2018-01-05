@@ -22,7 +22,8 @@ class TodoListsController < ApplicationController
   end
 
   def update
-    binding.pry
+    @todo.update(todo_params)
+    redirect_to todo_lists_path
   end
 
   def destroy
